@@ -13,6 +13,7 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
     using Microsoft.Kinect;
     using Microsoft.Kinect.Toolkit;
     using Microsoft.Kinect.Toolkit.Controls;
+    using System.Collections.Generic;
 
     /// <summary>
     /// Interaction logic for MainWindow
@@ -30,6 +31,7 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
         private const int PixelScrollByAmount = 20;
 
         private readonly KinectSensorChooser sensorChooser;
+        private DataHelper mDataHelper;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MainWindow"/> class. 
@@ -44,6 +46,8 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
             this.sensorChooserUi.KinectSensorChooser = this.sensorChooser;
             this.sensorChooser.Start();
 
+            this.mDataHelper = new DataHelper();
+          
             // Bind the sensor chooser's current sensor to the KinectRegion
             var regionSensorBinding = new Binding("Kinect") { Source = this.sensorChooser };
             BindingOperations.SetBinding(this.kinectRegion, KinectRegion.KinectSensorProperty, regionSensorBinding);
@@ -52,9 +56,11 @@ namespace Microsoft.Samples.Kinect.ControlsBasics
             this.wrapPanel.Children.Clear();
 
             // Add in display content
-            for (var index = 0; index < 300; ++index)
+
+            foreach (String enf in this.mDataHelper.Enfermeiros)
             {
-                var button = new KinectTileButton { Label = (index + 1).ToString(CultureInfo.CurrentCulture) };
+                var button = new KinectTileButton { Label = (enf).ToString(CultureInfo.CurrentCulture) };
+                button.Height = this.wrapPanel.Height;
                 this.wrapPanel.Children.Add(button);
             }
 

@@ -110,20 +110,20 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0"  Margin="10 0 10 20">
-            <Image HorizontalAlignment="Left" VerticalAlignment="Bottom" Source="Images\Logo.png" Stretch="None" Margin="0 0 0 4"/>
-            <k:KinectUserViewer k:KinectRegion.KinectRegion="{Binding ElementName=kinectRegion}" Height="100" HorizontalAlignment="Center" VerticalAlignment="Top" />
-            <k:KinectSensorChooserUI HorizontalAlignment="Center" VerticalAlignment="Top" Name="sensorChooserUi" />
-            <TextBlock HorizontalAlignment="Right" Margin="0 0 -1 0" VerticalAlignment="Bottom" Foreground="{StaticResource MediumGreyBrush}" FontSize="18">Controls Basics</TextBlock>
+            <Image HorizontalAlignment="Left" VerticalAlignment="Bottom" Stretch="Uniform" Margin="0 0 0 4" Source="Images/each.png" Height="100"/>
+            <k:KinectUserViewer k:KinectRegion.KinectRegion="{Binding ElementName=kinectRegion}" Height="100" HorizontalAlignment="Right" VerticalAlignment="Top" Visibility="Hidden"/>
+            <k:KinectSensorChooserUI HorizontalAlignment="Right" VerticalAlignment="Center" Name="sensorChooserUi" />
+            <TextBlock DockPanel.Dock="Top" Margin="0 0 100 0" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="Orange" FontFamily="MV Boli" FontSize="24" Text="Coleta de Dados Escala de Braden" />
         </Grid>
 
         <k:KinectRegion Grid.Row="1" x:Name="kinectRegion">
             <Grid x:Name="kinectRegionGrid" Margin="10,20,10,20">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
-                    <RowDefinition Height="170" />
+                    <RowDefinition Height="100" />
                 </Grid.RowDefinitions>
                 <k:KinectScrollViewer Grid.Row="0" Name="scrollViewer" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Disabled">
-                    <WrapPanel VerticalAlignment="Center" x:Name="wrapPanel" Orientation="Vertical" k:KinectTileButton.Click="KinectTileButtonClick">
+                    <WrapPanel VerticalAlignment="Stretch" x:Name="wrapPanel" Orientation="Vertical" k:KinectTileButton.Click="KinectTileButtonClick">
                         <!-- items for design layout.  They will be replaced at runtime. -->
                         <k:KinectTileButton Label="1"/>
                         <k:KinectTileButton Label="2"/>
